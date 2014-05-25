@@ -1,66 +1,79 @@
 package com.example.androidserviceexample.app;
+import java.util.ArrayList;
+import java.util.List;
 
-import android.support.v7.app.ActionBarActivity;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.app.ListActivity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ListActivity {
+    private LocalWordService s;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-        }
-
-        // Start the  service
-        public void startNewService(View view) {
-            System.out.println("starting new service in main activity..");
-            startService(new Intent(this, MyService.class));
-        }
-
-        // Stop the  service
-        public void stopNewService(View view) {
-
-            stopService(new Intent(this, MyService.class));
-        }
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main, menu);
-            return true;
-        }
-/*
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        System.out.println("in main onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        wordList = new ArrayList<String>();
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1,
+                wordList);
+        setListAdapter(adapter);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    protected void onResume() {
+        super.onResume();
+        Intent intent= new Intent(this, LocalWordService.class);
+        bindService(intent, mConnection,
+                Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(mConnection);
+    }
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName className,
+                                       IBinder binder) {
+            System.out.println("in onServiceConnected");
+            LocalWordService.MyBinder b = (LocalWordService.MyBinder) binder;
+            s = b.getService();
+            Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT)
+                    .show();
         }
-        return super.onOptionsItemSelected(item);
+
+        public void onServiceDisconnected(ComponentName className) {
+            s = null;
+        }
+    };
+
+
+    private ArrayAdapter<String> adapter;
+    private List<String> wordList;
+
+    public void onClick(View view) {
+        System.out.println("in onClick in mainActivity");
+        if (s != null) {
+            System.out.println("in onClick: s!=null!");
+            Toast.makeText(this, "Number of elements" + s.getWordList().size(),
+                    Toast.LENGTH_SHORT).show();
+            wordList.clear();
+            wordList.addAll(s.getWordList());
+            adapter.notifyDataSetChanged();
+        }else{
+            System.out.println("ERROR: s is null!");
+        }
     }
-*/
 }
