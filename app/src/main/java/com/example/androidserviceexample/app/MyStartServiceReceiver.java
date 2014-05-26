@@ -11,7 +11,7 @@ public class MyStartServiceReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent service = new Intent(context, LocalWordService.class);
+        Intent service = new Intent(context, LocalBluetoothService.class);
         context.startService(service);
     }
 }

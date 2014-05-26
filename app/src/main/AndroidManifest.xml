@@ -21,8 +21,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="LogScreen" android:label="LogScreen">
+        </activity>
+
+
         <service
-            android:name="LocalWordService"
+            android:name="LocalBluetoothService"
             android:icon="@drawable/ic_launcher"
             android:label="@string/service_name" >
         </service>

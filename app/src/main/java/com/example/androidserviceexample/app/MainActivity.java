@@ -1,4 +1,47 @@
 package com.example.androidserviceexample.app;
+
+
+
+
+
+
+
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends Activity
+{
+    LogScreen obB=new LogScreen();
+    public void onCreate(Bundle icicle)
+    {
+        super.onCreate(icicle);
+        setContentView(R.layout.activity_main);
+
+        //Button setupButton = (Button) findViewById(R.id.ServiceLog);
+
+
+        Button logScreenButton = (Button) findViewById(R.id.ServiceLog);
+        logScreenButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                // here i call new screen;
+                Intent i = new Intent(MainActivity.this, LogScreen.class);
+                startActivity(i);
+            }
+        });
+
+    }
+}
+
+
+
+
+/*
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +52,14 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 
 public class MainActivity extends ListActivity {
-    private LocalWordService s;
+    private LocalBluetoothService s;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +76,7 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent= new Intent(this, LocalWordService.class);
+        Intent intent= new Intent(this, LocalBluetoothService.class);
         bindService(intent, mConnection,
                 Context.BIND_AUTO_CREATE);
     }
@@ -48,7 +92,7 @@ public class MainActivity extends ListActivity {
         public void onServiceConnected(ComponentName className,
                                        IBinder binder) {
             System.out.println("in onServiceConnected");
-            LocalWordService.MyBinder b = (LocalWordService.MyBinder) binder;
+            LocalBluetoothService.MyBinder b = (LocalBluetoothService.MyBinder) binder;
             s = b.getService();
             Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT)
                     .show();
@@ -77,3 +121,4 @@ public class MainActivity extends ListActivity {
         }
     }
 }
+*/

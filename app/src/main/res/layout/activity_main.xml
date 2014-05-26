@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
+    >
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="Update" >
-    </Button>
-
-    <ListView
-        android:id="@id/android:list"
+        android:text="You are in the first Screen"
+        />
+    <Button android:id ="@+id/setup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="wrap_content"
+        android:text="Setup"
+        />
+    <Button android:id ="@+id/ServiceLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service Log"
+        />
 
 </LinearLayout>
