@@ -20,7 +20,7 @@
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="You are in the New Screen, press close for back to previous screen" />
+        android:text="You are in the service debug screen.  Press back to return to menu" />
 
     <ListView
         android:id="@id/android:list"

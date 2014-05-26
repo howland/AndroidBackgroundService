@@ -81,9 +81,7 @@ public class LogScreen extends ListActivity {
     private List<String> wordList;
 
     public void onClick(View view) {
-        System.out.println("in onClick in mainActivity");
         if (s != null) {
-            System.out.println("in onClick: s!=null!");
             Toast.makeText(this, "Number of elements" + s.getWordList().size(),
                     Toast.LENGTH_SHORT).show();
             wordList.clear();
