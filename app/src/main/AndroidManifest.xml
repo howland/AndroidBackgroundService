@@ -24,6 +24,8 @@
         <activity android:name="LogScreen" android:label="LogScreen">
         </activity>
 
+        <activity android:name="SetupScreen" android:label="SetupScreen">
+        </activity>
 
         <service
             android:name="LocalBluetoothService"

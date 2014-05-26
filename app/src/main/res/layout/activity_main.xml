@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="You are in the first Screen"
         />
-    <Button android:id ="@+id/setup"
+    <Button android:id ="@+id/Setup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Setup"

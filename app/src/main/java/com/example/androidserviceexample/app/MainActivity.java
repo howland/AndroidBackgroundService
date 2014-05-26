@@ -10,6 +10,7 @@ package com.example.androidserviceexample.app;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,7 +22,13 @@ public class MainActivity extends Activity
         super.onCreate(icicle);
         setContentView(R.layout.activity_main);
 
-        //Button setupButton = (Button) findViewById(R.id.ServiceLog);
+        Button setupButton = (Button) findViewById(R.id.Setup);
+        setupButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View arg0){
+                Intent i = new Intent(MainActivity.this, SetupScreen.class);
+                startActivity(i);
+            }
+        });
 
 
         Button logScreenButton = (Button) findViewById(R.id.ServiceLog);

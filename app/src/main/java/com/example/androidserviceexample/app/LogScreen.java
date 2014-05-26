@@ -37,8 +37,8 @@ public class LogScreen extends ListActivity {
                 wordList);
         setListAdapter(adapter);
 
-        Button b = (Button) findViewById(R.id.btnClick2);
-        b.setOnClickListener(new View.OnClickListener() {
+        Button backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 setResult(RESULT_OK);
                 finish();
