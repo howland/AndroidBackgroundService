@@ -4,11 +4,6 @@ package com.example.androidserviceexample.app;
  * Created by josh on 5/25/14.
  */
 
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,11 +11,13 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LogScreen extends ListActivity {
@@ -28,7 +25,6 @@ public class LogScreen extends ListActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        System.out.println("in main onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_log);
         wordList = new ArrayList<String>();
@@ -64,7 +60,7 @@ public class LogScreen extends ListActivity {
 
         public void onServiceConnected(ComponentName className,
                                        IBinder binder) {
-            System.out.println("in onServiceConnected");
+            //System.out.println("in onServiceConnected");
             LocalBluetoothService.MyBinder b = (LocalBluetoothService.MyBinder) binder;
             s = b.getService();
             Toast.makeText(LogScreen.this, "Connected", Toast.LENGTH_SHORT)
@@ -92,32 +88,3 @@ public class LogScreen extends ListActivity {
         }
     }
 }
-
-/*
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-public class LogScreen extends Activity
-{
-    MainActivity ob;
-    public void onCreate(Bundle icicle)
-    {
-        super.onCreate(icicle);
-        setContentView(R.layout.service_log);
-        Button b = (Button) findViewById(R.id.btnClick2);
-        b.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                setResult(RESULT_OK);
-                finish();
-            }
-        });
-    }
-
-    public void setOb( MainActivity obA){
-        this.ob=obA;
-    }
-}
-*/

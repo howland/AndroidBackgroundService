@@ -3,13 +3,13 @@ package com.example.androidserviceexample.app;
 /**
  * Created by josh on 5/25/14.
  */
-import java.util.Calendar;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import java.util.Calendar;
 
 public class MyScheduleReceiver extends BroadcastReceiver {
 

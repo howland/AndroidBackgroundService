@@ -9,35 +9,23 @@
         android:layout_height="65dp"
         android:text="Back" />
 
-    <Button android:id="@+id/save"
-        android:layout_width="396dp"
-        android:layout_height="65dp"
-        android:text="Save" />
 
-    <Button android:id="@+id/button1"
-        android:layout_width="396dp"
-        android:layout_height="65dp"
-        android:text="B!" />
+    <TextView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:paddingBottom="4dip"
+        android:text="pick_contact_msg"/>
+
+    <Button android:id="@+id/pick_contact"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="pick_contact">
+        <requestFocus />
+    </Button>
 
     <ListView
         android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enter text"/>
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout>
